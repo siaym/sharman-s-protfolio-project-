@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@700&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+
+  <!-- HERO (video + navbar) -->
+  <section class="hero" id="home">
+    <video class="background-video" autoplay muted loop playsinline>
+      <source src="bacvideo1.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <header class="navbar">
+      <div class="logo">Shariar</div>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#work">My Work</a>
+        <a href="#case-study">Case Study</a>
+      </nav>
+      <a href="#contact" class="talk-btn">LET’S TALK</a>
+    </header>
+
+    <!-- Middle content is visually on the hero (starts below navbar) -->
+    <div class="middle-section">
+      <div class="intro-container">
+        <div class="intro-text">
+          <p class="hey-text">Hey there 👋</p>
+          <h1 class="name-text">I’m Shariar</h1>
+        </div>
+
+        <!-- PHOTO: 24px gap from the name (controlled by .intro-container gap) -->
+        <div class="photo-wrapper">
+          <img src="myphoto.jpg" alt="Shariar" class="profile-photo" />
+        </div>
+      </div>
+
+      <!-- UX Designer (right-aligned per your Figma spec) -->
+      <h1 class="ux-designer">UX Designer</h1>
+
+      <!-- About block: heading + text block (text block has fixed height 84px) -->
+      <div class="about-section" id="about">
+        <h2 class="about-heading">About Me:</h2>
+        <div class="about-text-block">
+          <p class="about-text">
+            Certainly, Shariar Alam, often referred to as Sarman, is a dedicated and creative junior UI/UX designer at Pixency. With a passion for user-centered design, Sarman brings a fresh perspective to the field of user interface and user experience.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Slider (desktop/laptop-focused) -->
+  <section class="skills-section" aria-label="Skills">
+    <div class="skills-viewport">
+      <div class="skills-slider">
+        <div class="skill">⭐ User Interface</div>
+        <div class="skill">⭐ Mobile App Design</div>
+        <div class="skill">⭐ User Experience Design</div>
+        <div class="skill">⭐ Landing Page Design</div>
+        <div class="skill">⭐ Web App</div>
+        <div class="skill">⭐ Product</div>
+
+        <!-- duplicated set for seamless loop -->
+        <div class="skill">⭐ User Interface</div>
+        <div class="skill">⭐ Mobile App Design</div>
+        <div class="skill">⭐ User Experience Design</div>
+        <div class="skill">⭐ Landing Page Design</div>
+        <div class="skill">⭐ Web App</div>
+        <div class="skill">⭐ Product</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
