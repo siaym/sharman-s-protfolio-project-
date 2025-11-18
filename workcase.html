@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work & Case Study</title>
+
+<style>
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background: #0b0b0b;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ---------- NAVIGATION ---------- */
+
+.navbar {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: #111111;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav-btn {
+  padding: 12px 28px;
+  border-radius: 40px;
+  border: 1px solid #444;
+  color: white;
+  background: #1c1c1c;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.nav-btn.active,
+.nav-btn:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+/* ---------- SECTIONS ---------- */
+
+.section {
+  display: none;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.section.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ---------- TITLES ---------- */
+
+.section h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section p {
+  text-align: center;
+  opacity: 0.8;
+  margin-bottom: 40px;
+}
+
+/* ---------- GRID ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #1b1b1b;
+  padding: 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  background: #242424;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.card-title {
+  margin-top: 12px;
+  font-size: 17px;
+}
+
+/* ---------- CELEBRATION ANIMATIONS ---------- */
+
+.petal, .balloon, .confetti {
+  position: fixed;
+  top: -10px;
+  animation: fall linear infinite;
+  z-index: 2000;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  0%   { transform: translateY(-10px) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<div class="navbar">
+  <button class="nav-btn active" onclick="switchTab('work')">My Work</button>
+  <button class="nav-btn" onclick="switchTab('case')">Case Study</button>
+</div>
+
+<!-- MY WORK SECTION -->
+<section id="work" class="section active">
+  <h1>My Work</h1>
+  <p>Dribbble-style preview of your projects</p>
+
+  <div class="grid">
+    <div class="card"><img src="https://picsum.photos/600/400?random=1"><div class="card-title">UI Design 1</div></div>
+    <div class="card"><img src="https://picsum.photos/600/400?random=2"><div class="card-title">Mobile App Concept</div></div>
+    <div class="card"><img src="https://picsum.photos/600/400?random=3"><div class="card-title">Dashboard UI</div></div>
+    <div class="card"><img src="https://picsum.photos/600/400?random=4"><div class="card-title">Minimal Poster</div></div>
+  </div>
+</section>
+
+<!-- CASE STUDY SECTION -->
+<section id="case" class="section">
+  <h1>Case Studies</h1>
+  <p>Behance-style long form case study previews</p>
+
+  <div class="grid">
+    <div class="card"><img src="https://picsum.photos/600/450?random=10"><div class="card-title">Branding Strategy</div></div>
+    <div class="card"><img src="https://picsum.photos/600/450?random=11"><div class="card-title">Complete Redesign</div></div>
+    <div class="card"><img src="https://picsum.photos/600/450?random=12"><div class="card-title">UX Case Study</div></div>
+    <div class="card"><img src="https://picsum.photos/600/450?random=13"><div class="card-title">App Workflow</div></div>
+  </div>
+</section>
+
+<script>
+
+/* ---------------- SWITCH SECTIONS ---------------- */
+
+function switchTab(tab) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+  if (tab === 'work') {
+    document.getElementById('work').classList.add('active');
+    document.querySelectorAll('.nav-btn')[0].classList.add('active');
+  } else {
+    document.getElementById('case').classList.add('active');
+    document.querySelectorAll('.nav-btn')[1].classList.add('active');
+  }
+
+  createCelebration(); // run animation on tab switch
+}
+
+/* ---------------- CELEBRATION ANIMATIONS ---------------- */
+
+function createCelebration() {
+  for (let i = 0; i < 15; i++) {
+    let petal = document.createElement("div");
+    petal.classList.add("petal");
+    petal.innerHTML = "🌸";
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.fontSize = (Math.random() * 20 + 20) + "px";
+    petal.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(petal);
+    setTimeout(() => petal.remove(), 5000);
+  }
+
+  for (let i = 0; i < 10; i++) {
+    let balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+    balloon.innerHTML = "🎈";
+    balloon.style.left = Math.random() * 100 + "vw";
+    balloon.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(balloon);
+    setTimeout(() => balloon.remove(), 5000);
+  }
+}
+
+</script>
+
+</body>
+</html>
