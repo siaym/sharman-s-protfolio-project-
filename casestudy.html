@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Case Studies — Shariar</title>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    background:#060607;color:#fff;min-height:100vh;overflow-y:auto;
+  }
+
+  .bg-layer{position:fixed;inset:0;pointer-events:none;z-index:6;overflow:hidden;}
+
+  .particle{position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.9);filter:blur(6px);opacity:0.12;will-change:transform,opacity}
+  .orb{position:absolute;width:320px;height:320px;border-radius:50%;filter:blur(36px) saturate(1.05);opacity:0.12;mix-blend-mode:screen;will-change:transform}
+
+  header.navbar{
+    position:sticky;top:0;left:0;right:0;padding:22px 64px;display:flex;align-items:center;justify-content:space-between;z-index:40;
+    backdrop-filter:blur(12px);background:linear-gradient(180deg, rgba(11,11,11,0.28), rgba(11,11,11,0.10));border-bottom:1px solid rgba(255,255,255,0.03);
+  }
+  .logo{font-family:'Bai Jamjuree',sans-serif;font-weight:700;font-size:40px;background:linear-gradient(90deg,#EBFFED,#14C304);-webkit-background-clip:text;background-clip:text;color:transparent}
+  nav.nav-links{display:flex;gap:26px;align-items:center}
+  nav.nav-links a{color:#e8eef0;text-decoration:none;font-weight:700;font-size:15px}
+  nav.nav-links a:hover{color:#9df5a7}
+  .talk-btn{display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px;background:#fff;color:#000;text-decoration:none;font-weight:700}
+  .talk-btn:hover{transform:translateY(-3px);background:linear-gradient(90deg,#14C304,#00FFD1);color:#fff;box-shadow:0 8px 30px rgba(20,195,4,0.14)}
+
+  .hero{padding:110px 20px 28px;max-width:1100px;margin:0 auto;text-align:center;z-index:10}
+  .hero h1{font-size:44px;margin-bottom:8px}
+  .hero p{opacity:0.78;color:#dbe9d6}
+
+  .case-list{max-width:1100px;margin:28px auto 100px;padding:0 20px;display:grid;grid-template-columns:1fr;gap:28px}
+  .case{
+    display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:stretch;background:linear-gradient(180deg,#0f0f10,#141415);padding:0;border-radius:14px;border:1px solid rgba(255,255,255,0.03);overflow:hidden;
+    cursor: pointer; /* Added for clarity */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .case:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.4)}
+
+  .case .visual{min-height:300px;background:#111}
+  .case img{width:100%;height:100%;object-fit:cover;display:block}
+  .case .content{padding:22px}
+  .case .kicker{font-size:13px;color:#9fe6b8;font-weight:700;margin-bottom:8px}
+  .case .title{font-size:22px;font-weight:700;margin-bottom:10px}
+  .case .excerpt{opacity:0.8;line-height:1.6}
+  .case .meta{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+  .case .meta .pill{background:rgba(20,195,4,0.06);padding:8px 10px;border-radius:8px;color:#bfeecb;font-weight:700;font-size:13px}
+
+  @media (max-width:920px){.case{grid-template-columns:1fr;}.case .visual{height:260px}}
+  @media (max-width:520px){nav.nav-links{display:none}.talk-btn{display:none;padding:8px 12px}.logo{font-size:32px}}
+</style>
+</head>
+<body>
+
+  <div class="bg-layer" id="bg2"></div>
+
+  <header class="navbar">
+    <div class="logo">Shariar</div>
+    <nav class="nav-links">
+      <a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="mywork.html">My Work</a><a href="casestudy.html">Case Study</a>
+    </nav>
+    <a class="talk-btn" href="contact.html">LET’S TALK</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Case Studies — Selected Deep Dives</h1>
+      <p>Long form explorations of product design, UX research, and systems I built.</p>
+    </section>
+
+    <section class="case-list" id="cases">
+      <div class="case"><div class="visual"><div style="height:100%;width:100%" class="skele-img"></div></div><div class="content"><div style="height:18px;background:#111;border-radius:8px;margin-bottom:12px" class="skele"></div><div style="height:18px;background:#111;border-radius:8px;width:70%" class="skele"></div><div style="height:12px;margin-top:16px" class="skele"></div></div></div>
+      <div class="case"><div class="visual"><div style="height:100%;width:100%" class="skele-img"></div></div><div class="content"><div style="height:18px;background:#111;border-radius:8px;margin-bottom:12px" class="skele"></div><div style="height:18px;background:#111;border-radius:8px;width:62%" class="skele"></div><div style="height:12px;margin-top:16px" class="skele"></div></div></div>
+    </section>
+  </main>
+
+<script>
+(function(){
+  const bg = document.getElementById('bg2');
+  const rand = (a,b)=>Math.random()*(b-a)+a;
+
+  const orbCfg = [
+    {x:0.15,y:0.18,w:340,c1:'rgba(20,195,4,0.95)',c2:'rgba(0,255,209,0.95)',dur:30},
+    {x:0.85,y:0.28,w:300,c1:'rgba(18,213,255,0.95)',c2:'rgba(60,255,180,0.95)',dur:36}
+  ];
+  orbCfg.forEach(cfg=>{
+    const d=document.createElement('div');d.className='orb';
+    d.style.width=cfg.w+'px';d.style.height=cfg.w+'px';
+    d.style.left=(cfg.x*100)+'vw';d.style.top=(cfg.y*100)+'vh';
+    d.style.marginLeft=-(cfg.w/2)+'px';d.style.marginTop=-(cfg.w/2)+'px';
+    d.style.background=`radial-gradient(circle at 30% 30%, ${cfg.c1}, ${cfg.c2})`;
+    bg.appendChild(d);
+    let t0 = performance.now();
+    (function anim(now){
+      const t = (now - t0)/1000;
+      const dx = Math.sin(t*(2*Math.PI/cfg.dur))*18;
+      const dy = Math.cos(t*(2*Math.PI/cfg.dur))*10;
+      d.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+      requestAnimationFrame(anim);
+    })(t0);
+  });
+
+  // particles
+  const particleCount = 10;
+  for(let i=0;i<particleCount;i++){
+    const p=document.createElement('div');p.className='particle';
+    p.style.left=(Math.random()*100)+'vw';p.style.top=(Math.random()*100)+'vh';
+    const s = rand(3,11);p.style.width=s+'px';p.style.height=s+'px';
+    if(Math.random()>0.9) p.style.background='rgba(20,195,4,0.95)';
+    bg.appendChild(p);
+    const dur = rand(14,30); const ampX=rand(-40,40);const ampY=rand(-20,20);
+    let t0 = performance.now();
+    (function float(now){
+      const t=(now - t0)/1000;
+      const nx = Math.sin(t*(2*Math.PI/dur))*ampX;
+      const ny = Math.cos(t*(2*Math.PI/dur))*ampY;
+      p.style.transform = `translate3d(${nx}px,${ny}px,0)`;
+      requestAnimationFrame(float);
+    })(t0);
+  }
+})();
+
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.querySelectorAll('.orb,.particle').forEach(n=>n.remove());
+}
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="firebase.js"></script>
+
+<script>
+const caseList = document.getElementById("cases");
+
+// 🔥 LIVE connection to Firestore "casestudy"
+db.collection("casestudy")
+  .orderBy("created", "desc")
+  .onSnapshot(snapshot => {
+
+    caseList.innerHTML = ""; // remove skeletons
+
+    snapshot.forEach(doc => {
+      const c = doc.data();
+
+      const el = document.createElement("div");
+      el.className = "case";
+
+      el.innerHTML = `
+        <div class="visual">
+          <img loading="lazy" src="${c.img}" alt="${c.title}">
+        </div>
+
+        <div class="content">
+          <div class="kicker">Case Study</div>
+          <div class="title">${c.title}</div>
+          <div class="excerpt">${c.excerpt || ""}</div>
+          <div class="meta">
+            <div class="pill">UX</div>
+            <div class="pill">Design</div>
+          </div>
+        </div>
+      `;
+
+      el.onclick = () => window.open(c.link, "_blank");
+
+      caseList.appendChild(el);
+    });
+  });
+</script>
+
+</body>
+</html>
